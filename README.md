@@ -192,11 +192,20 @@ To this end, there are a number of options:
  	To try/use this boostrap code see the its script. The boot image contains code that may
 	be used to load binaries from ITS using the :GTLOAD command.<br>
  	However, I would note that the Lunar Lander ITS binary never gets past the start screen.<br>
-  	To correct this, once the start screen is on the display, stope simh from the GT40 console (^e)<br>
+  	To correct this, once the start screen is on the display, stop simh from the GT40 console (^e)<br>
    	then type the following into simh:  d psw 0 and then c. After a few seconds Lunar Lander will start.<br>
     <br>
     	Ian Schofield Jun 2024<br>
-     
+     <br>
+     	After some thought, I have re-enabled the option to control simh with the PDP11/05 paddle switches.<br>
+        This is achieved using the TIOCSTI ioctl. Please note the above in that this method is deprecated.<br>
+	In the case of the KL11 mod, this injection is at the device handler level (line 297 pdp11_stddev.c).<br>
+	Unfortunately there is no other obvious method of injecting text into the simh console.<br>
+	I would note that the method used for windows does not seem to have attracted the same amount of attention.<br>
+	The Linux code is at line 4031 in sim_console.c. Disable this if you wish.<br>
+     <br>
+     	Ian Schofield August 2024<br>
+  	
  
  
 
